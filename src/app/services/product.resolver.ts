@@ -13,23 +13,5 @@ export const ProductResolver: ResolveFn<IBook> = (route, state): Observable<IBoo
       return EMPTY;
     })
   )
-
 };
 
-
-// import {ActivatedRouteSnapshot, Resolve, ResolveFn, Router, RouterStateSnapshot} from '@angular/router';
-// import {IBook} from "../models/products";
-// import {catchError, EMPTY, Observable} from "rxjs";
-// import {ProductsService} from "./products.service";
-//
-// export class ProductResolver implements Resolve<IBook> {
-//   constructor(private ProductService: ProductsService,private router: Router) {}
-//   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IBook> | Promise<IBook> | IBook {
-//     return this.ProductService.getProduct(route.params?.['id']).pipe(
-//       catchError(() => {
-//         this.router.navigate(['/']);
-//         return EMPTY;
-//       })
-//     )
-//   }
-// }

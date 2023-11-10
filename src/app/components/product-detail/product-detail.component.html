@@ -1,1 +1,19 @@
-<p>product-detail works!</p>
+<div class="container">
+  <mat-card class="card">
+    <mat-card-header>
+      <div mat-card-avatar></div>
+      <mat-card-title class="title">{{product.title}}</mat-card-title>
+      <mat-card-subtitle class="subtitle">{{product.subtitle}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image class="image" src="{{product.image}}" alt="Photo of a Shiba Inu">
+    <div class="info">
+      <p class="vendor-code">ISBN-13: {{product.isbn13}}</p>
+      <p class="price">{{Number(product.price.slice(1)) == 0 ? 'Free' : product.price}}</p>
+      <p>{{product.added ? 'added' : ''}}</p>
+    </div>
+    <mat-card-actions align="end">
+      <button mat-button color="primary" class="button" disabled="{{product.added == true ? true : false}}"  (click)="addToBasket(product, basket)">add to cart</button>
+
+    </mat-card-actions>
+  </mat-card>
+</div>

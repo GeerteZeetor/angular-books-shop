@@ -1,0 +1,43 @@
+.container {
+  margin: 0 auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  width: 400px;
+  height: 600px;
+  background-color: #f1f0f0;
+
+  .title {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .image {
+    max-width: 300px;
+  }
+
+  .button {
+    margin: 0 10px 15px 0;
+  }
+
+  .info {
+    margin-left: 20px;
+  }
+
+  .price {
+    color: red;
+  }
+}

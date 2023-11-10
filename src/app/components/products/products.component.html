@@ -1,1 +1,54 @@
-<p>products works!</p>
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Book name" #input>
+</mat-form-field>
+
+<div class="container">
+  <table mat-table [dataSource]="dataSource" matSort
+         (matSortChange)="announceSortChange($event)"
+         class="mat-elevation-z8 table">
+
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef class="image-column"> #</th>
+      <td mat-cell *matCellDef="let element" class="image-column" (click)="navigateToProductDetail(element.id)">
+        <img class="img-list" src="{{element.image}}" alt="book">
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by title" class="title"> Title
+      </th>
+      <td class="title" mat-cell *matCellDef="let element"
+          (click)="navigateToProductDetail(element.id)">{{element.title}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="subtitle">
+      <th mat-header-cell *matHeaderCellDef> Subtitle</th>
+      <td mat-cell *matCellDef="let element"> {{element.subtitle}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="basket">
+      <th mat-header-cell *matHeaderCellDef> Basket</th>
+      <td mat-cell *matCellDef="let element">{{element.added ? 'added' : ''}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="price-column"> Price</th>
+      <td mat-cell *matCellDef="let element" class="price-column price"> ${{ Number(element.price.slice(1))}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="buy">
+      <th mat-header-cell *matHeaderCellDef class="button-column"> Buy</th>
+      <td mat-cell *matCellDef="let element" class="button-column">
+        <button class="add-button" disabled="{{element.added}}" (click)="addToBasket(element, basket)">+</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">{{input.value}}</td>
+    </tr>
+  </table>
+</div>

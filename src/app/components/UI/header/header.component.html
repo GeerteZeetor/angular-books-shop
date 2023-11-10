@@ -1,12 +1,18 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <div class="toolbar no-select" routerLink="">
-    <mat-icon>book_5</mat-icon>
-    <span>Books shop</span>
+      <mat-icon>book_5</mat-icon>
+      <span>Books shop</span>
     </div>
     <span class="example-spacer"></span>
     <div class="toolbar no-select">
-    <mat-icon>shopping_cart</mat-icon>
+      <div>
+        <button class="toolbar button" mat-raised-button
+                [matBadge]="basket.length" matBadgePosition="before" matBadgeColor="accent" routerLink="basket">
+          <mat-icon>shopping_cart</mat-icon> Cart
+        </button>
+      </div>
+
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
